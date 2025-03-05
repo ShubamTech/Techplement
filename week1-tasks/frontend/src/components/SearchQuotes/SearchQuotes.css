@@ -1,0 +1,99 @@
+.search-container {
+  max-width: 600px;
+  margin: 5px auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  
+}
+
+h2 {
+  color: #02b863;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #1976d2;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 15px;
+  background: #dc5e0f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+/* Centering the quote results */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align quotes */
+}
+
+li {
+  background: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #333;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  max-width: 90%; /* Ensures quotes don’t stretch too wide */
+  word-wrap: break-word; /* Wraps long words properly */
+  white-space: normal; /* Allows text wrapping */
+  overflow: hidden;
+  display: block;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+/* Fade-in animation for quotes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .search-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  input {
+    width: 50%;
+  }
+
+  button {
+    width: 30%;
+    margin-top: 10px;
+  }
+
+  li {
+    max-width: 100%;
+  }
+}

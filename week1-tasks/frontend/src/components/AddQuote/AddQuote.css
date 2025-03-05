@@ -1,0 +1,43 @@
+body {
+  background-image: url("/public/background.jpg"); /* Use absolute path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps background fixed */
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* If you want to apply background to only the form */
+form {
+  border-radius: 10px;
+  width: 50%;
+  margin: 5px auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Add spacing between inputs */
+}
+
+input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 30%; /* Make button full width */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
