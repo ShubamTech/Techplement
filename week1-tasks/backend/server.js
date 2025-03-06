@@ -84,10 +84,10 @@ app.get("/api/quotes/search", async (req, res) => {
 app.use("/api/quotes", quoteRoutes);
 
 // ==== Serve React Frontend ====
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
 app.listen(PORT, () => {
