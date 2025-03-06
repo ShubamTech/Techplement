@@ -10,7 +10,7 @@ const SearchQuote = () => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:1000/api/quotes/search?author=${author}`
+        `https://techplement-u9bt.onrender.com/api/quotes/search?author=${author}`
       );
       setQuotes(response.data);
       setShowResults(true);
