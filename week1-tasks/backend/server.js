@@ -10,25 +10,32 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 1000;
 
-app.use(cors());
+// ✅ Fix CORS: Move it before routes
+app.use(
+  cors({
+    origin: "*", // Allows access from all devices
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
+// ✅ Fix MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// ✅ Fix OverwriteModelError
 const quoteSchema = new mongoose.Schema({
   content: { type: String, required: true },
   author: { type: String, required: true },
 });
 
-// Fix OverwriteModelError
 const Quote = mongoose.models.Quote || mongoose.model("Quote", quoteSchema);
 
+// ✅ Define API Routes
 app.get("/api/quotes", async (req, res) => {
   try {
     const quotes = await Quote.find();
@@ -83,21 +90,15 @@ app.get("/api/quotes/search", async (req, res) => {
 
 app.use("/api/quotes", quoteRoutes);
 
-// ==== Serve React Frontend ====
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// ✅ Fix Frontend Build Path
+const frontendPath = path.join(__dirname, "../frontend/build");
+app.use(express.static(frontendPath));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
+// ✅ Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-app.use(
-  cors({
-    origin: "*", // Allows all origins
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
