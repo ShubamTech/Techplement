@@ -6,7 +6,7 @@ const QuoteList = () => {
   const [quote, setQuote] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:1000/api/quotes/today")
+    axios.get("https://techplement-u9bt.onrender.com/api/quotes/today")
       .then(response => setQuote(response.data))
       .catch(error => console.error("Error fetching today's quote:", error));
   }, []);
