@@ -1,15 +1,14 @@
 body {
-  background-image: url("/public/background.jpg"); /* Use absolute path */
+  background-image: url("/public/background.jpg"); 
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Keeps background fixed */
+  background-attachment: fixed; 
   background-repeat: no-repeat;
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* If you want to apply background to only the form */
 form {
   border-radius: 10px;
   width: 50%;
@@ -18,7 +17,7 @@ form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Add spacing between inputs */
+  gap: 5px; 
 }
 
 input {
@@ -29,10 +28,11 @@ input {
 }
 
 button {
-  width: 30%; /* Make button full width */
+  width: 40%;
   padding: 10px;
   background-color: #007bff;
   color: white;
+  align-items: center;
   border: none;
   border-radius: 5px;
   cursor: pointer;
