@@ -2,14 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const path = require("path");
 const quoteRoutes = require("./routes/quoteRoutes");
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 1000;
-
 app.use(cors());
 app.use(express.json());
 
@@ -83,13 +80,5 @@ app.get("/api/quotes/search", async (req, res) => {
 
 app.use("/api/quotes", quoteRoutes);
 
-// ==== Serve React Frontend ====
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export as a serverless function for Vercel
+module.exports = app;
