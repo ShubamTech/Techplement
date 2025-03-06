@@ -9,7 +9,7 @@ const AddQuote = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:1000/api/quotes", { content, author });
+      await axios.post("https://techplement-u9bt.onrender.com/api/quotes", { content, author });
       setContent("");
       setAuthor("");
       alert("Quote added successfully!");
